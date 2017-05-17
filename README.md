@@ -147,7 +147,6 @@ $ nano /boot/loader/entries/archlinux.conf
 	initrd /intel-ucode.img
 	initrd /initramfs-linux.img
 	options root=/dev/sda3 rw
-
 ```
 
 ## Step 16 - Setup GRUB main config
@@ -155,12 +154,11 @@ $ nano /boot/loader/entries/archlinux.conf
 $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-## Step 17 - netctl
+## Step 17 - NetworkManager
 ```sh
 $ pacman -S networkmanager wpa_supplicant dialog network-manager-applet gnome-keyring
-systemctl enable NetworkManager.service
-systemctl start NetworkManager.service
-
+$ systemctl enable NetworkManager.service
+$ systemctl start NetworkManager.service
 ```
 
 ## Step 18 - Add User
