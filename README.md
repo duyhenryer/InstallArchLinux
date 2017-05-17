@@ -3,13 +3,10 @@ My Arch Linux Installution
 
 This time, I'll install ArchLinux inside of VirtualBox ;)
 
-## - ArchLinux ISO
-[Here](https://www.archlinux.org/download/)
+### - ArchLinux ISO [Here](https://www.archlinux.org/download/)
 
-## - VirtualBox
-[Here](https://www.virtualbox.org/wiki/Downloads)
+### - VirtualBox [Here](https://www.virtualbox.org/wiki/Downloads)
 
-## Requirement - At Least 2GB memory to skip swap step
 ## Step 1 - Check Internet Connection
 ```sh
 $ ping -c 3 www.archlinux.org
@@ -36,7 +33,8 @@ TODO: Add Screenshot
 ```sh
 $ mkfs.ext4 /dev/sda1
 $ mkfs.ext4 /dev/sda2
-$ mkfs.ext4 /dev/sda3
+$ mkswap /dev/sda3
+$ swapon /dev/sda3
 $ mkfs.ext4 /dev/sda4
 ```
 
