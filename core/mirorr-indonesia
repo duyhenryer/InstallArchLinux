@@ -1,0 +1,4 @@
+## Indonesia
+#Server = http://mirror.devilzc0de.org/archlinux/$repo/os/$arch
+#Server = http://mirror.poliwangi.ac.id/archlinux/$repo/os/$arch
+#Server = http://suro.ubaya.ac.id/archlinux/$repo/os/$arch
