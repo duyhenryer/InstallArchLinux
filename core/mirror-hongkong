@@ -1,0 +1,3 @@
+## Hong Kong
+#Server = http://arch-mirror.wtako.net/$repo/os/$arch
+#Server = https://arch-mirror.wtako.net/$repo/os/$arch

@@ -1,0 +1,27 @@
+## France
+#Server = http://archlinux.de-labrusse.fr/$repo/os/$arch
+#Server = http://mirror.archlinux.ikoula.com/archlinux/$repo/os/$arch
+#Server = http://archlinux.vi-di.fr/$repo/os/$arch
+#Server = https://archlinux.vi-di.fr/$repo/os/$arch
+#Server = http://mirror.armbrust.me/archlinux/$repo/os/$arch
+#Server = https://mirror.armbrust.me/archlinux/$repo/os/$arch
+#Server = https://archlinux.ec-tech.fr/$repo/os/$arch
+#Server = http://fooo.biz/archlinux/$repo/os/$arch
+#Server = https://fooo.biz/archlinux/$repo/os/$arch
+#Server = http://mirror.gerhard.re/archlinux/$repo/os/$arch
+#Server = http://mirror.ibcp.fr/pub/archlinux/$repo/os/$arch
+#Server = http://mirror.lastmikoi.net/archlinux/$repo/os/$arch
+#Server = http://archlinux.mailtunnel.eu/$repo/os/$arch
+#Server = https://www.mailtunnel.eu/archlinux/$repo/os/$arch
+#Server = http://mir.archlinux.fr/$repo/os/$arch
+#Server = http://archlinux.mirrors.ovh.net/archlinux/$repo/os/$arch
+#Server = http://archlinux.mirror.pkern.at/$repo/os/$arch
+#Server = https://archlinux.mirror.pkern.at/$repo/os/$arch
+#Server = http://archlinux.polymorf.fr/$repo/os/$arch
+#Server = http://mirrors.standaloneinstaller.com/archlinux/$repo/os/$arch
+#Server = http://arch.tamcore.eu/$repo/os/$arch
+#Server = http://mirror.tyborek.pl/arch/$repo/os/$arch
+#Server = https://mirror.tyborek.pl/arch/$repo/os/$arch
+#Server = http://ftp.u-strasbg.fr/linux/distributions/archlinux/$repo/os/$arch
+#Server = https://mirror.wormhole.eu/archlinux/$repo/os/$arch
+#Server = http://arch.yourlabs.org/$repo/os/$arc

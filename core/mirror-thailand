@@ -1,0 +1,4 @@
+## Thailand
+#Server = http://mirror.adminbannok.com/archlinux/$repo/os/$arch
+#Server = http://mirror.kku.ac.th/archlinux/$repo/os/$arch
+#Server = https://mirror.kku.ac.th/archlinux/$repo/os/$arch
