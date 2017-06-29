@@ -142,11 +142,11 @@ $ pacman -S intel-ucode
 $ bootctl install
 $ nano /boot/loader/entries/archlinux.conf
  add more:
-	title ArchLinux
-	linux /vmlinuz-linux
-	initrd /intel-ucode.img
-	initrd /initramfs-linux.img
-	options root=/dev/sda3 rw
+	        title ArchLinux
+	        linux /vmlinuz-linux
+	        initrd /intel-ucode.img
+	        initrd /initramfs-linux.img
+	        options root=/dev/sda3 rw
 ```
 
 ## Step 16 - Setup GRUB main config
@@ -242,9 +242,9 @@ to this
 exec startxfce4
 ```
 
-copy to yhoshino11's home directory
+copy to duyhenry's home directory
 ```sh
-$ cp ~/.xinitrc /home/yhoshino11/
+$ cp ~/.xinitrc /home/duyhenry/
 ```
 ## Step 7 - Login with yhoshino11
 ```sh
