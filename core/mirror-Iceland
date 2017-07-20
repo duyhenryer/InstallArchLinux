@@ -1,0 +1,3 @@
+## Iceland
+#Server = http://mirror.system.is/arch/$repo/os/$arch
+#Server = https://mirror.system.is/arch/$repo/os/$arch
