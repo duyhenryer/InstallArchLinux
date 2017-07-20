@@ -7,6 +7,8 @@ This time, I'll install ArchLinux inside of VirtualBox ;)
 
 ### - VirtualBox [Here](https://www.virtualbox.org/wiki/Downloads)
 
+### - All mirror list [Here](https://www.archlinux.org/mirrorlist/all/)
+
 ## Step 1 - Check Internet Connection
 ```sh
 $ ping -c 3 www.archlinux.org
