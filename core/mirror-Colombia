@@ -1,0 +1,3 @@
+## Colombia
+#Server = http://mirror.edatel.net.co/archlinux/$repo/os/$arch
+#Server = http://mirror.upb.edu.co/archlinux/$repo/os/$arch
