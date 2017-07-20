@@ -1,0 +1,3 @@
+## Belgium
+#Server = http://archlinux.cu.be/$repo/os/$arch
+#Server = http://archlinux.mirror.kangaroot.net/$repo/os/$arch
