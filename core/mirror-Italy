@@ -1,0 +1,7 @@
+## Italy
+#Server = http://archlinux.prometeolibero.eu/archlinux/$repo/os/$arch
+#Server = https://archlinux.prometeolibero.eu/archlinux/$repo/os/$arch
+#Server = https://archlinux.beccacervello.it/archlinux/$repo/os/$arch
+#Server = http://mi.mirror.garr.it/mirrors/archlinux/$repo/os/$arch
+#Server = http://mirrors.prometeus.net/archlinux/$repo/os/$arch
+#Server = http://archlinux.students.cs.unibo.it/$repo/os/$arch
