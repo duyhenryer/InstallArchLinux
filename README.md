@@ -30,6 +30,17 @@ TODO: Add Screenshot
 - /dev/sda3 - /
 - /dev/sda4 - home
 
+#### - For example with EFI
+```aidl
+
+cgdisk /dev/sda
+
+	    /dev/sda1       		EFI		                 ef00
+	    /dev/sda2       		swap	                8200
+	    /dev/sda3	       	filesystem	          8300
+    /dev/sda4       filesystem          8300
+``` 
+
 ## Step 3 - Formatting
 #### BIOS
 ```sh
