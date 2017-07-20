@@ -1,0 +1,11 @@
+## Netherlands
+#Server = http://arch.apt-get.eu/$repo/os/$arch
+#Server = http://mirror.i3d.net/pub/archlinux/$repo/os/$arch
+#Server = https://mirror.i3d.net/pub/archlinux/$repo/os/$arch
+#Server = http://mirror.nl.leaseweb.net/archlinux/$repo/os/$arch
+#Server = https://mirror.nl.leaseweb.net/archlinux/$repo/os/$arch
+#Server = http://mirror.netrouting.net/archlinux/$repo/os/$arch
+#Server = http://ftp.nluug.nl/os/Linux/distr/archlinux/$repo/os/$arch
+#Server = http://ftp.snt.utwente.nl/pub/os/linux/archlinux/$repo/os/$arch
+#Server = http://archlinux.mirror.wearetriple.com/$repo/os/$arch
+#Server = https://archlinux.mirror.wearetriple.com/$repo/os/$arch
