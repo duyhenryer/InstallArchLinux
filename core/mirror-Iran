@@ -1,0 +1,4 @@
+## Iran
+#Server = http://repo.iut.ac.ir/repo/archlinux/$repo/os/$arch
+#Server = http://repo.sadjad.ac.ir/arch/$repo/os/$arch
+#Server = https://repo.sadjad.ac.ir/arch/$repo/os/$arch
