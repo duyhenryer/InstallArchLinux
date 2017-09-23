@@ -23,7 +23,7 @@ TODO: Add Screenshot
 - /dev/sda4 - home
 
 #### type [ef00] on type definition for EFI partition
-TODO: Add Screenshot
+TODO: Add ScreenshotS
 - FreeSpace
 - /dev/sda1 - boot
 - /dev/sda2 - EFI
@@ -32,12 +32,11 @@ TODO: Add Screenshot
 
 #### - For example with EFI
 ```
-cgdisk 
-/dev/sda
-/dev/sda1       		EFI		        ef00
-/dev/sda2       		swap	                8200
-/dev/sda3	       	        filesystem	        8300
-/dev/sda4                       filesystem              8300
+cgdisk /dev/sda
+/dev/sda1           		EFI		                  ef00
+/dev/sda2           		swap	                 8200
+/dev/sda3	           filesystem	           8300
+/dev/sda4           filesystem           8300
         
 ``` 
 
@@ -124,7 +123,7 @@ $ export LANG=en_US.UTF-8
 
 ### Step 12 - TimeZone & Hardware Clock
 ```sh
-$ ln -s /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
+$ ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 $ hwclock --systohc --utc
 ```
 
@@ -215,10 +214,13 @@ $ exit
 $ umount -R /mnt
 $ reboot
 ```
-Arch Machine Setup is Done !
-Let's take a coffee break
+Arch Machine Setup is Done ! Let's take a coffee break
 
-=== After Installing Arch ===
+
+`--------------------------------------------------------------------------`
+
+
+##After Installing Arch 
 ### Step 1 - zsh
 ```sh
 $ pacman -S zsh
@@ -279,9 +281,9 @@ copy to duyhenry's home directory
 ```sh
 $ cp ~/.xinitrc /home/duyhenry/
 ```
-### Step 7 - Login with duyhenry
+### Step 7 - Login with user
 ```sh
-$ su duyhenry
+$ su user
 $ cd
 $ chsh
 $ /bin/zsh
@@ -311,7 +313,7 @@ in ~/.xinitrc, add this line before exec startxfce4
 /usr/bin/VBoxClient-all
 ```
 
-### Step 11 - Install Chromium
+### Step 11 - Install Chromium firefox
 ```sh
 $ pacman -S chromium firefox 
 ```
