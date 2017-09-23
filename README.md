@@ -162,19 +162,12 @@ $ nano /boot/loader/entries/archlinux.conf
 	        options root=/dev/sda3 rw
 ```
 
-### Step 16 - Setup GRUB main config
+### Step 16 - Setup GRUB main config with BIOS
 ```sh
 $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-### Step 17 - NetworkManager
-```sh
-$ pacman -S networkmanager wpa_supplicant dialog network-manager-applet gnome-keyring
-$ systemctl enable NetworkManager.service
-$ systemctl start NetworkManager.service
-```
-
-### Step 18 - Add User
+### Step 17 - Add User
 ```sh
 $ useradd -m -g users -G wheel,storage,power -s /bin/bash username
 $ passwd username
@@ -189,7 +182,34 @@ add more:	username  ALL =(ALL) ALL
 	        wheel ALL=(ALL) ALL
 ```
 
-### Step 19 - Unmount & Reboot
+### Step 18 - Add archlinuxfr
+```sh
+$ vim /etc/pacman.conf
+```
+```sh
+[multilib]
+Include = /etc/pacman.d/mirrorlist # Uncomment
+```
+
+add this on bottom of file
+```sh
+[archlinuxfr]
+SigLevel = Never
+Server = http://repo.archlinux.fr/$arch
+```
+
+After run: `pacman -Syu`
+
+### Step 19 - NetworkManager
+```sh
+$ pacman -S networkmanager wpa_supplicant dialog network-manager-applet gnome-keyring
+$ systemctl enable NetworkManager.service
+$ systemctl start NetworkManager.service
+```
+
+
+### Step 20 - Unmount & Reboot
+
 ```sh
 $ exit
 $ umount -R /mnt
@@ -259,9 +279,9 @@ copy to duyhenry's home directory
 ```sh
 $ cp ~/.xinitrc /home/duyhenry/
 ```
-### Step 7 - Login with yhoshino11
+### Step 7 - Login with duyhenry
 ```sh
-$ su yhoshino11
+$ su duyhenry
 $ cd
 $ chsh
 $ /bin/zsh
@@ -294,22 +314,6 @@ in ~/.xinitrc, add this line before exec startxfce4
 ### Step 11 - Install Chromium
 ```sh
 $ pacman -S chromium firefox 
-```
-
-### Step 12 - Yaourt
-```sh
-$ vim /etc/pacman.conf
-```
-```sh
-[multilib]
-Include = /etc/pacman.d/mirrorlist # Uncomment
-```
-
-add this on bottom of file
-```sh
-[archlinuxfr]
-SigLevel = Never
-Server = http://repo.archlinux.fr/$arch
 ```
 
 run these commands
