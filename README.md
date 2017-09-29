@@ -201,13 +201,16 @@ Server = http://repo.archlinux.fr/$arch
 
 After run: `pacman -Syu`
 
-### Step 19 - NetworkManager
+### Step 19 - NetworkManager and other
 ```sh
 $ pacman -S networkmanager wpa_supplicant dialog network-manager-applet gnome-keyring
 $ systemctl enable NetworkManager.service
 $ systemctl start NetworkManager.service
 ```
 
+```sh
+$ pacman -S vim tmux git 
+```
 
 ### Step 20 - Unmount & Reboot
 
