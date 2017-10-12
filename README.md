@@ -35,6 +35,7 @@ TODO: Add ScreenshotS
 
 cgdisk /dev/sda
 
+
 	/dev/sda1               EFI		           ef00
 	/dev/sda2               swap	                   8200
 	/dev/sda3	        filesystem	           8300
@@ -110,7 +111,11 @@ $ arch-chroot /mnt
 ```sh
 $ nano /etc/locale.gen
 ```
-##### uncomment    `[en_US.UTF-8 UTF-8] `and your language
+...
+[en_US.UTF-8 UTF-8] 
+...
+
+```
 
 ### Step 10 - locale-gen
 ```sh
@@ -131,9 +136,9 @@ $ hwclock --systohc --utc
 
 ### Step 13 - Hostname
 ```sh
-$ echo "MyArch" > /etc/hostname
+$ echo "YourArch" > /etc/hostname
 $ cat /etc/hostname
-    MyArch
+    YourArch
 ```
 
 ### Step 14 - Password
