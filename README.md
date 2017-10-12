@@ -110,7 +110,7 @@ $ arch-chroot /mnt
 ### Step 9 - Locale
 ```sh
 $ nano /etc/locale.gen
-```
+
 ...
 [en_US.UTF-8 UTF-8] 
 ...
