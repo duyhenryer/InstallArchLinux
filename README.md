@@ -1,50 +1,46 @@
 # ArchLinux Installation
-Arch Linux Installution
+## Arch Linux 
 
-Fisrt time, I'll install ArchLinux inside of VirtualBox ;)
+Fisrt time, I'll install ArchLinux inside of VirtualBox.
 
-#### - ArchLinux ISO [Here](https://www.archlinux.org/download/)
+```
+  | Name              |                      Link                               |  
+  |-------------------|---------------------------------------------------------|
+  | ArchLinux ISO     |   https://www.archlinux.org/download/                   |
+  | VirtualBox        |   https://www.virtualbox.org/wiki/Downloads             | 
+  | All mirror list   |   https://www.archlinux.org/mirrorlist/all/             |
+ ```
 
-#### - VirtualBox [Here](https://www.virtualbox.org/wiki/Downloads)
+### Step 1 - Check Internet Connection and start 
 
-#### - All mirror list [Here](https://www.archlinux.org/mirrorlist/all/)
-
-### Step 1 - Check Internet Connection
-```sh
-<F6>$ ping -c 3 www.archlinux.org
-![Screenshot](./01.png)
+```ping -c 3 www.archlinux.org```
 
 ### Step 2 - Partitioning
-#### type [ef02] on type definition for BIOS partition
-TODO: Add Screenshot
-- /dev/sda1 - boot
-- /dev/sda2 - /
-- /dev/sda3 - BIOS
-- /dev/sda4 - home
 
-#### type [ef00] on type definition for EFI partition
-TODO: Add ScreenshotS
-- FreeSpace
-- /dev/sda1 - boot
-- /dev/sda2 - EFI
-- /dev/sda3 - /
-- /dev/sda4 - home
+- ####  Type [ef02] on type definition for BIOS partition
 
-#### - For example with EFI
-```aidl
+![Screenshot](Images/01.png)
 
-cgdisk /dev/sda
+- ##### BIOS partition
+
+![Screenshot](Images/02.png)
+
+```
+  | Reference | Mounting point    |  Size                        |   File system    |
+  |-----------|-------------------|------------------------------|------------------|
+  | /dev/sda1 |  /boot            |  512 M                       |  ext2            |
+  | /dev/sda2 |                   |  RAM size or more            |  swap            |
+  | /dev/sda3 |  /                |  20 Go                       |  ext4            |
+  | /dev/sda4 |  /home            | The rest of the disc         |  ext4            | 
+ ```
+ 
+ ``` cfdisk /dev/sda ``` 
+
+![Screenshot](Images/03.png)
 
 
-	/dev/sda1               EFI		           ef00
-	/dev/sda2               swap	                   8200
-	/dev/sda3	        filesystem	           8300
-	/dev/sda                filesystem                 8300
-        
-``` 
+### Step 3- BIOS - Formatting
 
-### Step 3 - Formatting
-##### BIOS
 ```sh
 $ mkfs.ext4 /dev/sda1
 $ mkfs.ext4 /dev/sda2
@@ -53,17 +49,8 @@ $ swapon /dev/sda3
 $ mkfs.ext4 /dev/sda4
 ```
 
-##### EFI
-```sh
-$ mkfs.fat -F32	/dev/sda1
-$ mkswap /dev/sda2
-$ swapon /dev.sda2
-$ mkfs.ext4 /dev/sda3
-$ mkfs.ext4 /dev/sda4
-```
+#### Step 4 - BIOS - Mounting
 
-#### Step 4 - Mounting
-##### BIOS
 ```sh
 $ mount /dev/sda2 /mnt
 $ mkdir -p /mnt/{boot,home}
@@ -72,7 +59,33 @@ $ mount /dev/sda4 /mnt/home
 $ mount /dev/sda3 /mnt
 ```
 
-##### EFI
+- #### Type [ef00] on type definition for EFI partition
+
+![Screenshot](Images/04.png)
+
+```cgdisk /dev/sda```
+
+```
+  | Reference | Mounting point    |  Size                        |   File system    |Style     |
+  |-----------|-------------------|------------------------------|------------------|----------|
+  | /dev/sda1 |  /boot            |  512 M                       |  EFI             |  EF00    |
+  | /dev/sda2 |                   |  RAM size or more            |  swap            |  8200    |
+  | /dev/sda3 |  /                |  20 Go                       |  ext4            |  8300    |
+  | /dev/sda4 |  /home            | The rest of the disc         |  ext4            |  8300    |
+ ```
+
+![Sceenshot](Images/05.png)
+
+### Step 3-EFI  - Formatting 
+```sh
+$ mkfs.fat -F32	/dev/sda1
+$ mkswap /dev/sda2
+$ swapon /dev.sda2
+$ mkfs.ext4 /dev/sda3
+$ mkfs.ext4 /dev/sda4
+```
+
+#### Step 4 - EFI - Mounting 
 ```sh
 $ mount /dev/sda3 /mnt
 $ mkdir -p /mnt/{boot,home}
@@ -81,18 +94,16 @@ $ mount /dev/sda4 /mnt/home
 ```
 
 ### Step 5 - MirrorList
+
+![Screenshot](Images/06.png)
+
 ```sh
 $ nano /etc/pacman.d/mirrorlist
 ```
 ###### Find your country, and move it to the top of the list
 
 ### Step 6 - Install Base
-##### BIOS
-```sh
-$ pacstrap /mnt base base-devel 
-```
 
-##### EFI
 ```sh
 $ pacstrap /mnt base base-devel 
 ```
@@ -108,6 +119,9 @@ $ arch-chroot /mnt
 ```
 
 ### Step 9 - Locale
+
+
+
 ```sh
 $ nano /etc/locale.gen
 
@@ -147,16 +161,21 @@ $ passwd
 ```
 
 ### Step 15 - BootLoader
+
 ##### BIOS
 ```sh
 $ pacman -S grub
 $ grub-install --recheck /dev/sda
+$ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ##### EFI
+
+![Screenshot](Images/07.png)
+
 ```sh
-$ pacman -S bash-completion
 $ mkinitcpio -p linux
+$ pacman -S bash-completion
 $ pacman -S intel-ucode
 $ bootctl install
 $ nano /boot/loader/entries/archlinux.conf
@@ -168,12 +187,7 @@ $ nano /boot/loader/entries/archlinux.conf
 	        options root=/dev/sda3 rw
 ```
 
-### Step 16 - Setup GRUB main config with BIOS
-```sh
-$ grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-### Step 17 - Add User
+### Step 16 - Add User
 ```sh
 $ useradd -m -g users -G wheel,storage,power -s /bin/bash username
 $ passwd username
@@ -188,7 +202,7 @@ add more:	username  ALL =(ALL) ALL
 	        wheel ALL=(ALL) ALL
 ```
 
-### Step 18 - Add archlinuxfr
+### Step 17 - Add archlinuxfr
 ```sh
 $ vim /etc/pacman.conf
 ```
@@ -204,9 +218,9 @@ SigLevel = Never
 Server = http://repo.archlinux.fr/$arch
 ```
 
-After run: `pacman -Syu`
+After run:   ```pacman -Syy```
 
-### Step 19 - NetworkManager and other
+### Step 18 - NetworkManager and other
 ```sh
 $ pacman -S networkmanager wpa_supplicant dialog network-manager-applet gnome-keyring
 $ systemctl enable NetworkManager.service
