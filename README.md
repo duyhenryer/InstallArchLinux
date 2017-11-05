@@ -12,7 +12,7 @@ Fisrt time, I'll install ArchLinux inside of VirtualBox ;)
 ### Step 1 - Check Internet Connection
 ```sh
 <F6>$ ping -c 3 www.archlinux.org
-![Screenshot](Images/01.png)
+![Screenshot](./01.png)
 
 ### Step 2 - Partitioning
 #### type [ef02] on type definition for BIOS partition
