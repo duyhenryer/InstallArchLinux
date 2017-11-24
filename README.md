@@ -266,7 +266,7 @@ $ vim /etc/slim.conf
 ```sh
 login_cmd exec /bin/zsh -l ~/.xinitrc %session
 daemon yes
-default_user yhoshino11
+default_user duyhenry
 focus_password yes
 current_theme archlinux-simplyblack
 ```
@@ -339,7 +339,7 @@ in ~/.xinitrc, add this line before exec startxfce4
 
 ### Step 11 - Install Chromium firefox
 ```sh
-$ pacman -S chromium firefox 
+$ pacman -S chromium firefox flashplayer  
 ```
 
 run these commands
