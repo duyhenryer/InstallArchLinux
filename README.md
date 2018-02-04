@@ -342,6 +342,39 @@ in ~/.xinitrc, add this line before exec startxfce4
 $ pacman -S chromium firefox flashplayer  
 ```
 
+### Install Desktop Environment 
+```sh
+[Install xfce4 Desktop Environment]
+$ sudo pacman -S xfce4 xfce4-goodies
+
+[Install Budgie Desktop Environment]
+$ sudo pacman -S budgie-desktop
+
+[Install GNOME Desktop Environment]
+$ sudo pacman -S gnome gnome-extra
+
+[Install Cinnamon Desktop Environment]
+$ sudo pacman -S cinnamon nemo-fileroller
+
+[Install KDE Desktop Environment]
+$ sudo pacman -S plasma
+
+[Install Mate Desktop Environment]
+$ sudo pacman -S mate mate-extra
+
+[Install Deepin Desktop Environment]
+$ sudo pacman -S deepin deepin-extra
+
+[Install Enlightenment Desktop Environment]
+$ sudo pacman -S enlightenment
+
+[Install LXDE Desktop Environment]
+$ sudo pacman -S lxde
+
+[Install LXQT Desktop Environment]
+$ sudo pacman -S lxqt
+```
+
 run these commands
 ```sh
 $ pacman -S --refresh yaourt
