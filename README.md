@@ -107,25 +107,23 @@ $ nano /etc/pacman.d/mirrorlist
 ```
 ###### Find your country, and move it to the top of the list
 
-### Step 4 - Install Base
+## Step 4 - Install Base
 
 ```sh
 $ pacstrap /mnt base base-devel 
 ```
 
-### Step 5 - fstab
+## Step 5 - fstab
 ```sh
 $ genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
-### Step 6 - chroot
+## Step 6 - chroot
 ```sh
 $ arch-chroot /mnt
 ```
 
-### Step 7 - Locale
-
-
+## Step 7 - Locale
 
 ```sh
 $ nano /etc/locale.gen
@@ -136,45 +134,45 @@ $ nano /etc/locale.gen
 
 ```
 
-### Step 8 - locale-gen
+## Step 8 - locale-gen
 ```sh
 $ locale-gen
 ```
 
-### Step 9 - Language setting
+## Step 9 - Language setting
 ```sh
 $ echo LANG=en_US.UTF-8 > /etc/locale.conf
 $ export LANG=en_US.UTF-8
 ```
 
-### Step 10 - TimeZone & Hardware Clock
+## Step 10 - TimeZone & Hardware Clock
 ```sh
 $ ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 $ hwclock --systohc --utc
 ```
 
-### Step 11 - Hostname
+## Step 11 - Hostname
 ```sh
 $ echo "YourArch" > /etc/hostname
 $ cat /etc/hostname
     YourArch
 ```
 
-### Step 12 - Password
+## Step 12 - Password
 ```sh
 $ passwd
 ```
 
-### Step 13 - BootLoader
+## Step 13 - BootLoader
 
-#### BootLoader - BIOS
+### BootLoader - BIOS
 ```sh
 $ pacman -S grub
 $ grub-install --recheck /dev/sda
 $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-#### BootLoader - EFI
+### BootLoader - EFI
 
 <!-- ![Screenshot](Images/07.png) -->
 
@@ -191,7 +189,7 @@ $ nano /boot/loader/entries/archlinux.conf
 	        options root=/dev/sda3 rw
 ```
 
-### Step 14 - Add User
+## Step 14 - Add User
 ```sh
 $ useradd -m -g users -G wheel,storage,power -s /bin/bash username
 $ passwd username
@@ -206,7 +204,7 @@ add more:	username  ALL =(ALL) ALL
 	        wheel ALL=(ALL) ALL
 ```
 
-### Step 15 - Add archlinuxfr
+## Step 15 - Add archlinuxfr
 ```sh
 $ nano /etc/pacman.conf
 ```
@@ -224,7 +222,7 @@ Server = http://repo.archlinux.fr/$arch
 
 After run:   ```pacman -Syy```
 
-### Step 16 - NetworkManager and other
+## Step 16 - NetworkManager and other
 ```sh
 $ pacman -S networkmanager 
 $ systemctl enable NetworkManager.service
@@ -235,7 +233,7 @@ $ systemctl start NetworkManager.service
 $ pacman -S wpa_supplicant dialog network-manager-applet gnome-keyring vim tmux git  
 ```
 
-### Step 17 - Unmount & Reboot
+## Step 17 - Unmount & Reboot
 
 ```sh
 $ exit
@@ -248,25 +246,25 @@ Arch Machine Setup is Done ! Let's take a coffee break
 `--------------------------------------------------------------------------`
 
 
-##After Installing Arch 
-### Step 1 - zsh
+# After Installing Arch 
+## Step 1 - zsh
 ```sh
 $ pacman -S zsh
 $ chsh
 $ /bin/zsh
 ```
 
-### Step 2 - xorg
+## Step 2 - xorg
 ```sh
 $ pacman -S xorg-server xorg-server-utils xorg-xinit xorg-xclock xterm
 ```
 
-### Step 3 - Slim (wallpaper)
+## Step 3 - Slim (wallpaper)
 ```sh
 $ pacman -S slim archlinux-themes-slim slim-themes
 $ vim /etc/slim.conf
 ```
-#### Edit & Uncomment like this
+### Edit & Uncomment like this
 ```sh
 login_cmd exec /bin/zsh -l ~/.xinitrc %session
 daemon yes
@@ -275,17 +273,17 @@ focus_password yes
 current_theme archlinux-simplyblack
 ```
 
-### Step 4 - enable Slim for Login Screen
+## Step 4 - enable Slim for Login Screen
 ```sh
 $ systemctl enable slim.service
 ```
 
-### Step 5 - Xfce
+## Step 5 - Xfce
 ```sh
 $ pacman -S xfce4 xfce4-goodies gamin
 ```
 
-### Step 6 - Start X at Login
+## Step 6 - Start X at Login
 ```sh
 $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
 $ vim ~/.xinitrc
@@ -309,7 +307,7 @@ copy to duyhenry's home directory
 ```sh
 $ cp ~/.xinitrc /home/duyhenry/
 ```
-### Step 7 - Login with user
+## Step 7 - Login with user
 ```sh
 $ su user
 $ cd
@@ -317,17 +315,17 @@ $ chsh
 $ /bin/zsh
 ```
 
-### Step 8 - enable Mouse & Keyboard
+## Step 8 - enable Mouse & Keyboard
 ```sh
 $ pacman -S xorg-drivers
 ```
 
-### Step 9 - enable Disk Mount
+## Step 9 - enable Disk Mount
 ```sh
 $ pacman -S gvfs
 ```
 
-### Step 10 - Virtualbox Guest Additions
+## Step 10 - Virtualbox Guest Additions
 ```sh
 $ pacman -S virtualbox-guest-utils
 $ modprobe -a vboxguest vboxsf vboxvideo # try to copy things from host to guest with the clipboard to see if it works
@@ -341,12 +339,12 @@ in ~/.xinitrc, add this line before exec startxfce4
 /usr/bin/VBoxClient-all
 ```
 
-### Step 11 - Install Chromium firefox
+## Step 11 - Install Chromium firefox
 ```sh
 $ pacman -S chromium firefox flashplayer  
 ```
 
-### Install Desktop Environment 
+## Install Desktop Environment 
 ```sh
 [Install xfce4 Desktop Environment]
 $ sudo pacman -S xfce4 xfce4-goodies
