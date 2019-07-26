@@ -1,4 +1,4 @@
-# ArchLinux Installation
+# ArchLinux Installation Guideline
 ## Arch Linux 
 
 Fisrt time, I'll install ArchLinux inside of VirtualBox.
@@ -11,17 +11,20 @@ Fisrt time, I'll install ArchLinux inside of VirtualBox.
   | All mirror list   |   https://www.archlinux.org/mirrorlist/all/             |
  ```
 
-### Step 1 - Check Internet Connection and start 
+## Step 1 - Check Internet Connection and start 
 
 ```ping -c 3 www.archlinux.org```
 
-### Step 2 - Partitioning
+## Step 2 - Partitioning
 
-- ####  Type [ef02] on type definition for BIOS partition
+### Method 1
+
+Type `[ef02] `on type definition for BIOS partition
 
 ![Screenshot](Images/01.png)
 
-- ##### BIOS partition
+
+ `BIOS partition`
 
 ![Screenshot](Images/02.png)
 
@@ -39,7 +42,7 @@ Fisrt time, I'll install ArchLinux inside of VirtualBox.
 ![Screenshot](Images/03.png)
 
 
-### Step 3- BIOS - Formatting
+#### BIOS - Formatting
 
 ```sh
 $ mkfs.ext4 /dev/sda1
@@ -49,7 +52,7 @@ $ swapon /dev/sda3
 $ mkfs.ext4 /dev/sda4
 ```
 
-#### Step 4 - BIOS - Mounting
+#### BIOS - Mounting
 
 ```sh
 $ mount /dev/sda2 /mnt
@@ -59,7 +62,9 @@ $ mount /dev/sda4 /mnt/home
 $ mount /dev/sda3 /mnt
 ```
 
-- #### Type [ef00] on type definition for EFI partition
+### Method 2
+
+- #### Type ` [ef00] ` on type definition for EFI partition
 
 ![Screenshot](Images/04.png)
 
@@ -76,16 +81,16 @@ $ mount /dev/sda3 /mnt
 
 ![Sceenshot](Images/05.png)
 
-### Step 3-EFI  - Formatting 
+#### EFI  - Formatting 
 ```sh
 $ mkfs.fat -F32	/dev/sda1
 $ mkswap /dev/sda2
-$ swapon /dev.sda2
+$ swapon /dev/sda2
 $ mkfs.ext4 /dev/sda3
 $ mkfs.ext4 /dev/sda4
 ```
 
-#### Step 4 - EFI - Mounting 
+#### EFI - Mounting 
 ```sh
 $ mount /dev/sda3 /mnt
 $ mkdir -p /mnt/{boot,home}
@@ -93,7 +98,7 @@ $ mount /dev/sda1 /mnt/boot
 $ mount /dev/sda4 /mnt/home
 ```
 
-### Step 5 - MirrorList
+## Step 3 - MirrorList
 
 ![Screenshot](Images/06.png)
 
@@ -102,23 +107,23 @@ $ nano /etc/pacman.d/mirrorlist
 ```
 ###### Find your country, and move it to the top of the list
 
-### Step 6 - Install Base
+### Step 4 - Install Base
 
 ```sh
 $ pacstrap /mnt base base-devel 
 ```
 
-### Step 7 - fstab
+### Step 5 - fstab
 ```sh
 $ genfstab -U -p /mnt >> /mnt/etc/fstab
 ```
 
-### Step 8 - chroot
+### Step 6 - chroot
 ```sh
 $ arch-chroot /mnt
 ```
 
-### Step 9 - Locale
+### Step 7 - Locale
 
 
 
@@ -131,52 +136,51 @@ $ nano /etc/locale.gen
 
 ```
 
-### Step 10 - locale-gen
+### Step 8 - locale-gen
 ```sh
 $ locale-gen
 ```
 
-### Step 11 - Language setting
+### Step 9 - Language setting
 ```sh
 $ echo LANG=en_US.UTF-8 > /etc/locale.conf
 $ export LANG=en_US.UTF-8
 ```
 
-### Step 12 - TimeZone & Hardware Clock
+### Step 10 - TimeZone & Hardware Clock
 ```sh
 $ ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 $ hwclock --systohc --utc
 ```
 
-### Step 13 - Hostname
+### Step 11 - Hostname
 ```sh
 $ echo "YourArch" > /etc/hostname
 $ cat /etc/hostname
     YourArch
 ```
 
-### Step 14 - Password
+### Step 12 - Password
 ```sh
 $ passwd
 ```
 
-### Step 15 - BootLoader
+### Step 13 - BootLoader
 
-##### BIOS
+#### BootLoader - BIOS
 ```sh
 $ pacman -S grub
 $ grub-install --recheck /dev/sda
 $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-##### EFI
+#### BootLoader - EFI
 
-![Screenshot](Images/07.png)
+<!-- ![Screenshot](Images/07.png) -->
 
 ```sh
 $ mkinitcpio -p linux
-$ pacman -S bash-completion
-$ pacman -S intel-ucode
+$ pacman -S bash-completion intel-ucode
 $ bootctl install
 $ nano /boot/loader/entries/archlinux.conf
  add more:
@@ -187,7 +191,7 @@ $ nano /boot/loader/entries/archlinux.conf
 	        options root=/dev/sda3 rw
 ```
 
-### Step 16 - Add User
+### Step 14 - Add User
 ```sh
 $ useradd -m -g users -G wheel,storage,power -s /bin/bash username
 $ passwd username
@@ -202,9 +206,9 @@ add more:	username  ALL =(ALL) ALL
 	        wheel ALL=(ALL) ALL
 ```
 
-### Step 17 - Add archlinuxfr
+### Step 15 - Add archlinuxfr
 ```sh
-$ vim /etc/pacman.conf
+$ nano /etc/pacman.conf
 ```
 ```sh
 [multilib]
@@ -220,18 +224,18 @@ Server = http://repo.archlinux.fr/$arch
 
 After run:   ```pacman -Syy```
 
-### Step 18 - NetworkManager and other
+### Step 16 - NetworkManager and other
 ```sh
-$ pacman -S networkmanager wpa_supplicant dialog network-manager-applet gnome-keyring
+$ pacman -S networkmanager 
 $ systemctl enable NetworkManager.service
 $ systemctl start NetworkManager.service
 ```
 
 ```sh
-$ pacman -S vim tmux git 
+$ pacman -S wpa_supplicant dialog network-manager-applet gnome-keyring vim tmux git  
 ```
 
-### Step 20 - Unmount & Reboot
+### Step 17 - Unmount & Reboot
 
 ```sh
 $ exit
